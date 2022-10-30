@@ -4,11 +4,20 @@
 
 (in-package :clog-plunger)
 
+(defun on-click-card (card)
+  (toggle-class card "w3-border-red"))
+
 (defun on-file-new (obj)
   (let* ((app (connection-data-item obj "app-data"))
          (win (create-gui-window obj :title "New Window")))
     (declare (ignore app))
-    (create-apanel win)))
+    (setf (display (window-content win)) :flex)
+    (setf (flex-wrap (window-content win)) :wrap)
+    (setf (justify-content (window-content win)) :space-around)
+    (dotimes (n 30)
+      (let ((card (create-index-card (window-content win) :class "w3-margin w3-border")))
+        (set-on-click card #'on-click-card)
+        (setf (text (card-title card)) (format nil "Card - ~A" n))))))
 
 (defun on-help-about (obj)
   (let* ((about (create-gui-window obj
