@@ -19,6 +19,13 @@
         (set-on-click card #'on-click-card)
         (setf (text (card-title card)) (format nil "Card - ~A" n))))))
 
+(defun on-file-free (obj)
+  (let* ((app (connection-data-item obj "app-data"))
+         (win (create-gui-window obj :title "New Window")))
+    (declare (ignore app))
+    (let ((card (create-index-card (window-content win))))
+      (jquery-execute card "draggable()"))))
+
 (defun on-help-about (obj)
   (let* ((about (create-gui-window obj
                                    :title   "About"
@@ -50,10 +57,11 @@
            (icon-item   (create-gui-menu-icon menu-bar :on-click 'on-help-about))
            (file-item   (create-gui-menu-drop-down menu-bar :content "File"))
            (file-new    (create-gui-menu-item file-item :content "New Window" :on-click 'on-file-new))
+           (file-free   (create-gui-menu-item file-item :content "New Free Win" :on-click 'on-file-free))
            (help-item   (create-gui-menu-drop-down menu-bar :content "Help"))
            (help-about  (create-gui-menu-item help-item :content "About" :on-click 'on-help-about))
            (full-screen (create-gui-menu-full-screen menu-bar)))
-      (declare (ignore icon-item file-new help-about full-screen)))))
+      (declare (ignore icon-item file-new file-free help-about full-screen)))))
 
 (defun start-app ()
   (initialize 'on-new-window
