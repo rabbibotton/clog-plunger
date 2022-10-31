@@ -1,9 +1,9 @@
 
 (asdf/parse-defsystem:defsystem #:clog-plunger
   :description
-  "New CLOG System"
+  "CLOG Plunger"
   :author
-  "some@one.com"
+  "David Botton"
   :license
   "BSD"
   :version
@@ -15,7 +15,7 @@
   :depends-on
   (#:clog)
   :components
-  ((:file "clog-plunger") (:file "card")))
+  ((:file "clog-plunger") (:file "card") (:file "card-body")))
 (asdf/parse-defsystem:defsystem #:clog-plunger/tools
   :defsystem-depends-on
   (:clog)
