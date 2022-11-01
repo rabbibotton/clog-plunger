@@ -21,6 +21,7 @@
          (win (create-gui-window obj :title "New Window")))
     (declare (ignore app))
     (let ((card (create-index-card (window-content win))))
+      (make-resizable card)
       (make-draggable card))))
 
 (defun on-help-about (obj)
