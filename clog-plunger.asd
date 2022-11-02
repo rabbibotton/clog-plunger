@@ -15,7 +15,7 @@
   :depends-on
   (#:clog)
   :components
-  ((:file "clog-plunger") (:file "card") (:file "card-body")))
+  ((:file "clog-plunger") (:file "card") (:file "card-body") (:file "images")))
 (asdf/parse-defsystem:defsystem #:clog-plunger/tools
   :defsystem-depends-on
   (:clog)
