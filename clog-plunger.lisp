@@ -6,7 +6,7 @@
 
 (defun on-file-new (obj)
   (let* ((app (connection-data-item obj "app-data"))
-         (win (create-gui-window obj :title "New Window")))
+         (win (create-gui-window obj :title "New Window" :width 800 :height 600)))
     (declare (ignore app))
     (setf (display (window-content win)) :flex)
     (setf (flex-wrap (window-content win)) :wrap)
@@ -28,7 +28,7 @@
 
 (defun on-file-free (obj)
   (let* ((app (connection-data-item obj "app-data"))
-         (win (create-gui-window obj :title "New Window")))
+         (win (create-gui-window obj :title "New Free Win" :width 800 :height 600)))
     (declare (ignore app))
     (setf (background-image (window-content win)) (ppcre:regex-replace-all "\\x0A" cork-image ""))
     (setf (background-repeat (window-content win)) :repeat)
@@ -80,3 +80,4 @@
    :static-root (merge-pathnames "./www/"
                   (asdf:system-source-directory :clog-plunger)))
   (open-browser))
+  
