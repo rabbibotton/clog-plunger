@@ -1,0 +1,3 @@
+<data id="I3876928384" data-in-package="clog-plunger" data-custom-slots="(card-hash :accessor card-hash :initform (make-hash-table* :test #'equalp))" data-clog-next-id="2" data-clog-title="card-board"></data><div data-clog-type="div" data-clog-name="board-frame" style="box-sizing: content-box; position: absolute; inset: 0px; background-image: none;" data-on-create="(setf (background-image target) (ppcre:regex-replace-all &quot;\\x0A&quot; cork-image &quot;&quot;))
+(setf (background-repeat target) :repeat)
+(setf (background-attachment target) :local)"></div>
