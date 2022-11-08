@@ -16,6 +16,12 @@
 (defmethod make-deletable ((card index-card))
   (setf (hiddenp (card-del card)) nil))
 
+(defmethod make-saveable ((card index-card))
+  (setf (hiddenp (card-save card)) nil))
+
+(defmethod make-loadable ((card index-card))
+  (setf (hiddenp (card-load card)) nil))
+
 (defmethod get-card-data ((card index-card))
   `(:card-id ,(card-id card)
     :title   ,(text-value (card-title card))
@@ -29,6 +35,20 @@
 
 
 ; Events
+
+(defun on-load-card (panel)
+  (server-file-dialog panel "Load File.." "."
+    (lambda (result)
+      (when result
+        (with-open-file (f result :direction :input)
+          (set-card-data panel (read f)))))))
+          
+(defun on-save-card (panel)
+  (server-file-dialog panel "Save File.." "."
+    (lambda (result)
+      (when result
+        (with-open-file (f result :direction :output :if-exists :supersede)
+          (write (get-card-data panel) :stream f))))))
 
 (defun on-delete-card (panel)
   (setf (hiddenp panel) t))

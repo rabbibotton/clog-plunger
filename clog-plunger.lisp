@@ -22,6 +22,8 @@
     (setf (background-color card) :white)
     (setf (editablep (card-title card)) t)
     (setf (editablep (card-body card)) t)
+    (make-saveable card)
+    (make-loadable card)
     (make-deletable card)
     (make-resizable card)
     (make-draggable card)))
