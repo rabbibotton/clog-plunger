@@ -25,13 +25,25 @@
 (defmethod get-card-data ((card index-card))
   `(:card-id ,(card-id card)
     :title   ,(text-value (card-title card))
-    :body    ,(text-value (card-body card))))
+    :body    ,(text-value (card-body card))
+    :top     ,(top card)
+    :left    ,(left card)
+    :width   ,(width card)
+    :height  ,(height card)))
 
 (defmethod set-card-data ((card index-card) data &key (replace-card-id t))
   (when replace-card-id
     (setf (card-id card) (getf data :card-id)))
   (setf (text-value (card-title card)) (getf data :title))
-  (setf (text-value (card-body card)) (getf data :body)))
+  (setf (text-value (card-body card)) (getf data :body))
+  (when (getf data :top)
+    (setf (top card) (getf data :top)))
+  (when (getf data :left)
+    (setf (left card) (getf data :left)))
+  (when (getf data :width)
+    (setf (width card) (getf data :width)))
+  (when (getf data :height)
+    (setf (height card) (getf data :height))))
 
 
 ; Events

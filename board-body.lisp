@@ -39,6 +39,5 @@
              (destroy v))
              (card-hash panel))
   (clrhash (card-hash panel)))
-  )
 
   
