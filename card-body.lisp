@@ -2,6 +2,9 @@
 
 ; Methods
 
+(defun new-card-id ()
+  (clog-connection::random-hex-string))
+
 (defmethod make-draggable ((card index-card))
   (jquery-execute card (format nil "draggable({stack:'#~A div'})"
                           (html-id (parent-element card)))))
@@ -49,14 +52,14 @@
 ; Events
 
 (defun on-load-card (panel)
-  (server-file-dialog panel "Load File.." "."
+  (server-file-dialog panel "Load File.." ""
     (lambda (result)
       (when result
         (with-open-file (f result :direction :input)
           (set-card-data panel (read f)))))))
           
 (defun on-save-card (panel)
-  (server-file-dialog panel "Save File.." "."
+  (server-file-dialog panel "Save File.." ""
     (lambda (result)
       (when result
         (with-open-file (f result :direction :output :if-exists :supersede)

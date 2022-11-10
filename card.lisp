@@ -7,36 +7,36 @@
            (card-frame :reader card-frame)
            (selectablep :accessor selectablep :initform nil)
            (selectedp :reader selectedp :initform nil)
-           (card-id :accessor card-id :initform (get-universal-time))))
+           (card-id :accessor card-id :initform (new-card-id))))
 (defun create-index-card
        (clog-obj &key (hidden nil) (class nil) (html-id nil) (auto-place t))
   (let ((panel
          (change-class
           (clog:create-div clog-obj :content
-                           "<div class=\"w3-border w3-container w3-card-2\" style=\"box-sizing: content-box; position: relative; overflow: auto; width: 261px; height: 161px; left: 0px; top: 0px;\" id=\"CLOGB3876915465\" data-clog-name=\"card-frame\"><div style=\"box-sizing: content-box; position: static;\" id=\"CLOGB3876915466\" data-clog-name=\"card-title\">Title</div><div style=\"box-sizing: content-box; position: static; height: 2px;\" class=\"w3-blue\" id=\"CLOGB3876915467\" data-clog-name=\"card-bar\"></div><div style=\"box-sizing: content-box; position: static;\" id=\"CLOGB3876915468\" data-clog-name=\"card-body\">Body</div><span style=\"box-sizing: content-box; position: absolute; top: 0px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-red\" id=\"CLOGB3876915469\" data-clog-name=\"card-del\">x</span><span style=\"box-sizing: content-box; position: absolute; top: 20px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-blue\" id=\"CLOGB3876915470\" data-clog-name=\"card-save\">&gt;</span><span style=\"box-sizing: content-box; position: absolute; top: 40px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-blue\" id=\"CLOGB3876915471\" data-clog-name=\"card-load\">&lt;</span></div>"
+                           "<div class=\"w3-border w3-container w3-card-2\" style=\"box-sizing: content-box; position: relative; overflow: auto; width: 261px; height: 161px; left: 0px; top: 0px;\" id=\"CLOGB3877097993\" data-clog-name=\"card-frame\"><div style=\"box-sizing: content-box; position: static;\" id=\"CLOGB3877097994\" data-clog-name=\"card-title\">Title</div><div style=\"box-sizing: content-box; position: static; height: 2px;\" class=\"w3-blue\" id=\"CLOGB3877097995\" data-clog-name=\"card-bar\"></div><div style=\"box-sizing: content-box; position: static;\" id=\"CLOGB3877097996\" data-clog-name=\"card-body\">Body</div><span style=\"box-sizing: content-box; position: absolute; top: 0px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-red\" id=\"CLOGB3877097997\" data-clog-name=\"card-del\">x</span><span style=\"box-sizing: content-box; position: absolute; top: 20px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-blue\" id=\"CLOGB3877097998\" data-clog-name=\"card-save\">&gt;</span><span style=\"box-sizing: content-box; position: absolute; top: 40px; right: 5px; width: 10px; height: 22px;\" class=\"w3-text-blue\" id=\"CLOGB3877097999\" data-clog-name=\"card-load\">&lt;</span></div>"
                            :hidden hidden :class class :html-id html-id
                            :auto-place auto-place)
           'index-card)))
     (setf (slot-value panel 'card-load)
-            (attach-as-child clog-obj "CLOGB3876915471" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097999" :clog-type
              'clog:clog-span :new-id t))
     (setf (slot-value panel 'card-save)
-            (attach-as-child clog-obj "CLOGB3876915470" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097998" :clog-type
              'clog:clog-span :new-id t))
     (setf (slot-value panel 'card-del)
-            (attach-as-child clog-obj "CLOGB3876915469" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097997" :clog-type
              'clog:clog-span :new-id t))
     (setf (slot-value panel 'card-body)
-            (attach-as-child clog-obj "CLOGB3876915468" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097996" :clog-type
              'clog:clog-div :new-id t))
     (setf (slot-value panel 'card-bar)
-            (attach-as-child clog-obj "CLOGB3876915467" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097995" :clog-type
              'clog:clog-div :new-id t))
     (setf (slot-value panel 'card-title)
-            (attach-as-child clog-obj "CLOGB3876915466" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097994" :clog-type
              'clog:clog-div :new-id t))
     (setf (slot-value panel 'card-frame)
-            (attach-as-child clog-obj "CLOGB3876915465" :clog-type
+            (attach-as-child clog-obj "CLOGB3877097993" :clog-type
              'clog:clog-div :new-id t))
     (let ((target (card-del panel)))
       (declare (ignorable target))

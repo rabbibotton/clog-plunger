@@ -14,7 +14,7 @@
     card))
     
 (defun save-board (panel)
-  (server-file-dialog panel "Safe Board.." ""
+  (server-file-dialog panel "Save Board.." ""
     (lambda (result)
       (with-open-file (f result :direction :output :if-exists :supersede)
         (let (out)
